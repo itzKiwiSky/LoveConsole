@@ -27,7 +27,7 @@ A simple to use and powerful command Console to your love games.
 
 > ### **[2] -** require it with `console = require 'console'`
 
-> ## **[3] -** Put every function on specific callback. Example : console:update(dt) to to love.update(dt) callback.
+> ### **[3] -** Put every function on specific callback. Example : console:update(dt) to to love.update(dt) callback.
 
 ---
 
