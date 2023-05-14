@@ -417,6 +417,7 @@ function tokenize(inputstr, sep)
     return t
 end
 
+-- cpack and cunpack created by mindreframer --
 function cpack(t, drop, indent)
 	assert(type(t) == "table", "Can only TSerial.pack tables.")
 	local s, indent = "{"..(indent and "\n" or ""), indent and math.max(type(indent)=="number" and indent or 0,0)
