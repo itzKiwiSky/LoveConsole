@@ -9,6 +9,8 @@ function love.load()
         console:trace("This is my cool command", 0)
         console:trace("And this is my argument" .. argument, 1)
     end)
+
+    console:setFont("PerfectDOS.ttf", 15)
 end
 
 function love.draw()

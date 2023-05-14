@@ -25,7 +25,7 @@ function console:new(x, y)
         -- pre-registred commands --
         {
             name = "clear",
-            description = "this is the help message",
+            description = "clear the screen",
             priority = 0,
             func = function()
                 self.meta.terminal = {}
@@ -393,6 +393,15 @@ function console:announce(message)
     Message.type = "announce"
     Message.text = tostring(message) or ""
     table.insert(self.meta.terminal, Message)
+end
+
+function console:setFont(fontFile, size)
+    if size == nil then
+        size = 15
+    end
+    local consoleFont = love.graphics.newFont(fontFile, size)
+    self.meta.font = consoleFont
+    self.meta.fontSize = size
 end
 
 ------------- special functions ------------------

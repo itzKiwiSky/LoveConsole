@@ -223,3 +223,20 @@ This function use a level system, higher level will be different colors
 | 1 | yellow |
 | 2 | Red |
 | 3 | Light-Blue |
+
+---
+
+### **console:setFont()**
+
+---
+
+Used to set a custom font to the console
+
+Usage: `console:setFont(<fontFile>, <size>)`
+
+| Parameters  | Type | optional | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| fontFile | `string` | no | The font file to load |
+| size | `number` | yes | The size of the font (the value will be 15 if it is nil)|
+
+> **OBS :** Check the `main.lua` file to see examples of code and also see how to setup the console on your project
