@@ -4,7 +4,6 @@ local lines = 0
 
 function console:init()
     utf8 = require 'utf8'
-    require 'getTableContent'
 
     love.keyboard.setKeyRepeat(true)
     self.x = 90
@@ -58,7 +57,7 @@ function console:init()
     self.meta.objects = {}
     self.meta.form = {}
     self.meta.form.command = ""
-    self.meta.isEnable = true
+    self.meta.isEnable = false
     self.meta.dragging = {}
     self.meta.dragging.active = false
     self.meta.dragging.diffX = 0
@@ -92,7 +91,7 @@ function console:init()
         self.meta.objects.font = love.graphics.newFont(self.theme.fontpath, self.theme.fontsize)
     end
     self.registry = {}
-    self.registry.showTraceback = true
+    self.registry.showTraceback = false
     love.graphics.setFont(self.meta.objects.font)
 end
 

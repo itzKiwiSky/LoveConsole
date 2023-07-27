@@ -1,15 +1,6 @@
 function love.load()
     loveconsole = require 'loveconsole'
     loveconsole:init()
-
-    theme1 = {
-        bg = {80, 79, 215},
-        fg = {38, 37, 127}
-    }
-    theme2 = {
-        bg = {247, 67, 67},
-        fg = {127, 37, 37}
-    }
 end
 
 function love.draw()

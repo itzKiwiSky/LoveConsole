@@ -197,6 +197,8 @@ function console:new(x, y)
     console:announce("LoveConsole v" .. console.Version)
     console:announce("By " .. console.author)
     console:announce("Love version : " .. string.format("%d.%d.%d - %s", love.getVersion()))
+    console:trace("[WARNING] You are using a deprecated version of LoveConsole.", 1)
+    console:trace("[WARNING] Please use the lastest version.", 1)
     console:trace("Loaded " .. #self.meta.commands .. " commands", 3)
 end
 
