@@ -32,6 +32,57 @@ function console:new(x, y)
             end
         },
         {
+            name = "console",
+            description = "this is the help message",
+            priority = 2,
+            func = function(...)
+                local tokens = cunpack(cpack({...}))
+                if tokens[1] == "mode" then
+                    if tokens[2] ~= nil then
+                        if type(tonumber(tokens[2])) == "number" then
+                            if tokens[3] ~= nil then
+                                if type(tonumber(tokens[3])) == "number" then
+                                    self.w = tonumber(tokens[2])
+                                    self.h = tonumber(tokens[3])
+                                    console:trace("Changed size!", 3)
+                                else
+                                    console:trace("this argument require a 'number'", 2)
+                                end
+                            else
+                                console:trace("invalid command argument", 2)
+                            end
+                        else
+                            console:trace("this argument require a 'number'", 2)
+                        end
+                    else
+                        console:trace("invalid command argument", 2)
+                    end
+                elseif tokens[1] == "position" then
+                    if tokens[2] ~= nil then
+                        if type(tonumber(tokens[2])) == "number" then
+                            if tokens[3] ~= nil then
+                                if type(tonumber(tokens[3])) == "number" then
+                                    self.x = tonumber(tokens[2])
+                                    self.y = tonumber(tokens[3])
+                                    console:trace("Changed size!", 3)
+                                else
+                                    console:trace("this argument require a 'number'", 2)
+                                end
+                            else
+                                console:trace("invalid command argument", 2)
+                            end
+                        else
+                            console:trace("this argument require a 'number'", 2)
+                        end
+                    else
+                        console:trace("invalid command argument", 2)
+                    end
+                else
+                    console:trace("invalid command argument", 2)
+                end
+            end
+        },
+        {
             name = "engine",
             description = "this is the help message",
             priority = 2,
@@ -87,7 +138,7 @@ function console:new(x, y)
             priority = 2,
             func = function(arg)
                 if arg == nil then
-                    console:trace("Failed to run 'app' command :: no arguments found :: usage | app <argument>" , 2)
+                    console:trace("Failed to run 'event' command :: no arguments found :: usage | app <argument>" , 2)
                 else
                     if arg == "quit" then
                         love.event.quit()

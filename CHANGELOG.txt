@@ -1,0 +1,8 @@
+[1.0]
+
+- first release
+
+[1.1]
+
+- Legacy code moved to folder `Legacy`
+- LoveConsole rewriteen from scratch with better functions

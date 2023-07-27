@@ -11,13 +11,11 @@ A simple to use and powerful command Console to your love games.
 - Simple color support
 - Easy to install and setup.
 - No need external files to work.
-- Command history
+- Window resizing and auto breaking text
 
 ### Planned:
 
-- [ ] Window resizing and auto breaking text
 - [ ] More default commands
-- [ ] Page history with scrolling
 
 ---
 
@@ -44,7 +42,7 @@ function love.load()
     gamestate = require 'gamestate'
 
     -- create a new console at x: 90, y: 90
-    console:new(90, 90)
+    console:init()
 
     -- states list (cool for organization :D) --
     states = {
@@ -93,19 +91,16 @@ end
 
 ### **[Example 2] |** creating custom commands (Part 1 - The basic command)
 
-This example will show you how to create a basic command *without any arguments*. It uses a function called `console:registerCommand:(<commandName>:string, <helpDescription>:string, <priorityLevel>:number, <commandFunction>:function)`
+This example will show you how to create a basic command *without any arguments*. It uses a function called `console:registerCommand:(<commandName>:string, <helpDescription>:string, <commandFunction>:function)`
 
-> **OBS :** The "priorityLevel" parameter is to define the color to appear on the help command.
-*0 = normal (white), 1 = medium (yellow), 2 = high (red), 3 = special (light-blue)*.
-
-> **OBS 2 :** This example also uses another command, the `console:trace()` command, it will be explained on the functions section.
+> **OBS :** This example also uses another command, the `console:trace()` command, it will be explained on the functions section.
 
 ```lua
 function love.load()
     -- require the console library --
     console = require 'console'
     -- create a new console at x: 90, y: 90
-    console:new(90, 90)
+    console:init()
 
     console:registerCommand("myCoolCommandName", "This is the help message, it will appear with help command", 0, function()
         console:trace("This is my cool command", 0)
@@ -133,8 +128,8 @@ function love.load()
     console:new(90, 90)
 
     console:registerCommand("myCoolCommandWithArgument", "This is the help message, it will appear with help command", 0, function(argument)
-        console:trace("This is my cool command", 0)
-        console:trace("And this is my argument" .. argument, 1)
+        console:trace("This is my cool command")
+        console:trace("And this is my argument" .. argument)
     end)
 end
 ```
@@ -213,30 +208,41 @@ Usage: `console:trace(<message>, <level>)`
 | Parameters  | Type | optional | Description |
 | ------------- | ------------- | ------------- | ------------- |
 | message | `string` | no | The message you want write |
-| level | `number` | yes | the level of the message (the value will be 0 if it is nil)|
-
-This function use a level system, higher level will be different colors
-
-| Level | Color |
-| :-----: | :-----: |
-| 0 | White (default) |
-| 1 | yellow |
-| 2 | Red |
-| 3 | Light-Blue |
 
 ---
 
-### **console:setFont()**
+### **console:setTheme()**
 
 ---
 
-Used to set a custom font to the console
+Used to change the colors of the console including  the text colors
 
-Usage: `console:setFont(<fontFile>, <size>)`
+Usage : `console:setTheme(_theme)`
 
 | Parameters  | Type | optional | Description |
 | ------------- | ------------- | ------------- | ------------- |
-| fontFile | `string` | no | The font file to load |
-| size | `number` | yes | The size of the font (the value will be 15 if it is nil)|
+| theme | `table` | no | The theme data table |
 
-> **OBS :** Check the `main.lua` file to see examples of code and also see how to setup the console on your project
+here the list of the possible values to use in this table:
+
+| Key | value |
+| ---- | ----- |
+| bg | table of colors (0 - 255) |
+| fg | table of colors (0 - 255) |
+| textColor | table of colors (0 - 255) |
+
+
+**Example** :
+```lua
+function love.load()
+    loveconsole:setTheme({
+        bg = {255, 255, 255},
+        fg = {128, 128, 128},
+        textColor = {
+            {255, 255, 255},
+            {128, 128, 128},
+            {0, 0, 0}
+        }
+    })
+end
+```

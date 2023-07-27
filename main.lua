@@ -1,38 +1,37 @@
 function love.load()
-    -- require the console library --
-    console = require 'console'
+    loveconsole = require 'loveconsole'
+    loveconsole:init()
 
-    -- create a new console at x: 90, y: 90
-    console:new(90, 90)
-    
-    console:registerCommand("myCoolCommandWithArgument", "This is the help message, it will appear with help command", 0, function(argument)
-        console:trace("This is my cool command", 0)
-        console:trace("And this is my argument" .. argument, 1)
-    end)
-
-    console:setFont("PerfectDOS.ttf", 15)
+    theme1 = {
+        bg = {80, 79, 215},
+        fg = {38, 37, 127}
+    }
+    theme2 = {
+        bg = {247, 67, 67},
+        fg = {127, 37, 37}
+    }
 end
 
 function love.draw()
-    console:render()
+    loveconsole:render()
 end
 
 function love.update(elapsed)
-    console:update()
+    loveconsole:update(elapsed)
 end
 
-function love.textinput(text)
-    console:textinput(text)
+function love.textinput(t)
+    loveconsole:textinput(t)
 end
 
 function love.keypressed(k)
-    console:keypressed(k)
+    loveconsole:keypressed(k)
 end
 
 function love.mousepressed(x, y, button)
-    console:mousepressed(x, y, button)
+    loveconsole:mousepressed(x, y, button)
 end
 
 function love.mousereleased(x, y, button)
-    console:mousereleased(x, y, button)
+    loveconsole:mousereleased(x, y, button)
 end
