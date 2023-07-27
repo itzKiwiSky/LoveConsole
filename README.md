@@ -102,8 +102,8 @@ function love.load()
     -- create a new console at x: 90, y: 90
     console:init()
 
-    console:registerCommand("myCoolCommandName", "This is the help message, it will appear with help command", 0, function()
-        console:trace("This is my cool command", 0)
+    console:registerCommand("myCoolCommandName", "This is the help message, it will appear with help command" function()
+        console:trace("This is my cool command")
     end)
 end
 ```
@@ -125,7 +125,7 @@ function love.load()
     -- require the console library --
     console = require 'console'
     -- create a new console at x: 90, y: 90
-    console:new(90, 90)
+    console:init()
 
     console:registerCommand("myCoolCommandWithArgument", "This is the help message, it will appear with help command", 0, function(argument)
         console:trace("This is my cool command")
