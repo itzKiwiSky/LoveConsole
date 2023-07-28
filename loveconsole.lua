@@ -153,7 +153,9 @@ function console:textinput(t)
         error("[:ERROR:] Console is not initialized")
     end
     if self.meta.isEnable then
-        self.meta.form.command = self.meta.form.command .. t
+        if t ~= self.binds.open then
+            self.meta.form.command = self.meta.form.command .. t
+        end
     end
 end
 
