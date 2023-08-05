@@ -37,6 +37,36 @@ function console:init()
             end
         },
         {
+            name = "console",
+            description = "console config command",
+            run = function(...)
+                local tokens = {...}
+                if tokens[1] == "mode" then
+                    if tokens[2] ~= nil then
+                        if type(tonumber(tokens[2])) == "number" then
+                            if tokens[3] ~= nil then
+                                if type(tonumber(tokens[3])) == "number" then
+                                    self.w = tonumber(tokens[2])
+                                    self.h = tonumber(tokens[3])
+                                    console:trace("Changed size!")
+                                else
+                                    console:trace("this argument require a 'number'")
+                                end
+                            else
+                                console:trace("invalid command argument")
+                            end
+                        else
+                            console:trace("this argument require a 'number'")
+                        end
+                    else
+                        console:trace("invalid command argument")
+                    end
+                else
+                    console:trace("invalid command")
+                end
+            end
+        },
+        {
             name = "color",
             description = "change the color",
             run = function(color)
@@ -91,7 +121,7 @@ function console:init()
         self.meta.objects.font = love.graphics.newFont(self.theme.fontpath, self.theme.fontsize)
     end
     self.registry = {}
-    self.registry.showTraceback = false
+    self.registry.showTraceback = true
     love.graphics.setFont(self.meta.objects.font)
 end
 

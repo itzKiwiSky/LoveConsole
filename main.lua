@@ -2,7 +2,7 @@ function love.load()
     loveconsole = require 'loveconsole'
     loveconsole:init()
 
-    loveconsole:rebind({open = "`"})
+    --loveconsole:rebind({open = "`"})
 end
 
 function love.draw()
